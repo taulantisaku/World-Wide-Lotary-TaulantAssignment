@@ -1,6 +1,11 @@
+import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
-import { Home } from "./components/Home/Home";
-import { SessionPlayers } from "./components/SessionPlayers/SessionPlayers";
+import Home from "./components/Home/Home";
+import SessionPlayers from "./components/SessionPlayers/SessionPlayers";
+import Statistics from "./components/Statistics/Statistics";
+import Winners from "./components/Winners/Winners";
+
+import { UserContext } from "./lib/context/UserContext";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -14,11 +19,13 @@ const queryClient = new QueryClient({
 });
 
 function App() {
+  const [user, setUser] = useState<any>(null);
   return (
     <QueryClientProvider client={queryClient}>
-      <div className="App">
-        <Home />
-      </div>
+      <Home />
+      <SessionPlayers />
+      <Winners />
+      <Statistics />
     </QueryClientProvider>
   );
 }
