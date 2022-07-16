@@ -1,0 +1,47 @@
+.Home {
+  &__header {
+    letter-spacing: 5px;
+    font-weight: 450;
+    text-transform: uppercase;
+    &__navlist {
+      display: flex;
+      background-color: #000080;
+      color: white;
+      justify-content: space-evenly;
+      list-style-type: none;
+
+      li {
+        padding: 15px;
+      }
+      li:hover {
+        background-color: #00005a;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__ButtonSection {
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+    &__GenerateButton {
+      font-family: Poppins;
+      letter-spacing: 2px;
+      padding: 10px;
+      background-color: #198754;
+      border: none;
+      border-radius: 5px;
+      color: white;
+
+      &:hover {
+        background-color: #2cbb84;
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__User {
+    display: flex;
+    justify-content: center;
+  }
+}
