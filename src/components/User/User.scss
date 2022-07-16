@@ -1,0 +1,13 @@
+.User {
+  margin: 0 auto;
+
+  &__Info {
+    &__FullName {
+      //   display: flex;
+      list-style-type: none;
+      li {
+        padding: 5px;
+      }
+    }
+  }
+}
