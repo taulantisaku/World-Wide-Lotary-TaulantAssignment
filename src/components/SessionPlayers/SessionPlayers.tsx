@@ -1,5 +1,6 @@
 import "../SessionPlayers/SessionPlayers.scss";
 
+import User from "../User/User";
 import { useUserContext } from "../../lib/context/UserContext";
 
 export interface SessionProps {
@@ -7,7 +8,7 @@ export interface SessionProps {
 }
 
 export const SessionPlayers = () => {
-  const { userList } = useUserContext();
+  const { user, userList } = useUserContext();
   console.log("userList", userList);
 
   if (!userList) {
@@ -15,11 +16,11 @@ export const SessionPlayers = () => {
   }
 
   return (
-    <div>
+    <div className="SessionPlayers">
       {userList && (
         <>
           {userList.map((user) => (
-            <p>{user.gender}</p>
+            <User user={user} />
           ))}
         </>
       )}
