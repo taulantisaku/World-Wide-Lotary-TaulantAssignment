@@ -22,7 +22,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Home />
-      <SessionPlayers />
+      {/* <SessionPlayers /> */}
     </QueryClientProvider>
   );
 }

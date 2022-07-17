@@ -8,8 +8,7 @@ export interface SessionProps {
 }
 
 export const SessionPlayers = () => {
-  const { user, userList } = useUserContext();
-  console.log("userList", userList);
+  const {  userList } = useUserContext();
 
   if (!userList) {
     return <>No users..</>;
@@ -20,7 +19,7 @@ export const SessionPlayers = () => {
       {userList && (
         <>
           {userList.map((user) => (
-            <User user={user} />
+            <User user={user} key={user.id.value} />
           ))}
         </>
       )}
