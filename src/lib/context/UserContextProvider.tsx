@@ -12,7 +12,7 @@ export const UserContextProvider = (props: UserContextProviderProps) => {
   const [user, setUser] = useState<null>(null);
   const [isWinner, setIsWinner] = useState<boolean>(false);
   const [userList, setUserList] = useState<any>([]);
-  // const [counter, setCounter] = useState<number>(0);
+  const [natList, setNatList] = useState<any>([]);
 
   const { isLoading, isError, data, refetch } = useQuery(
     ["query-users"],
@@ -34,16 +34,15 @@ export const UserContextProvider = (props: UserContextProviderProps) => {
 
       if (userAge === ranNum) {
         user.isWinner = true;
-
         alert("the winner is:" + user.name.first);
       }
       userList.push(user);
       setUserList(userList);
-      console.log("user", user);
-      console.log("userAge", userAge);
-      console.log("ranNum", ranNum);
+      // console.log("userAge", userAge);
+      // console.log("ranNum", ranNum);
 
       // console.log("userList", userList);
+      // console.log("user", user);
 
       return user;
     },
