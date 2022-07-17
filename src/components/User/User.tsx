@@ -5,33 +5,31 @@ export interface UserProps {
   isWinner?: boolean;
 }
 
-// export interface UserType {
-//   picture: {
-//     large:string;
-//     medium:string;
-//     thumbnail:string;
-//   }
-//   fullName: {
-//     title: string;
-//     first: string;
-//     last: string;
-//   };
-//   email: string;
-//   gender: string;
-//   cell: string;
-//   phone: string;
-//   location: string;
-//   nat: string;
-//   isWinner: boolean;
-//   age: number;
-//   timesPlayed: number;
-//   time: string;
-//   id: number;
-// }
+export interface UserType {
+  picture: {
+    large: string;
+    medium: string;
+    thumbnail: string;
+  };
+  fullName: {
+    title: string;
+    first: string;
+    last: string;
+  };
+  email: string;
+  gender: string;
+  cell: string;
+  phone: string;
+  location: string;
+  nat: string;
+  isWinner: boolean;
+  age: number;
+  timesPlayed: number;
+  time: string;
+  id: number;
+}
 
-export const User = (props: UserProps) => {
-  const { user } = props;
-
+export const User = ({ user }: UserProps) => {
   const picture = user?.picture.thumbnail;
   const fullName = user?.name;
   const email = user?.email;

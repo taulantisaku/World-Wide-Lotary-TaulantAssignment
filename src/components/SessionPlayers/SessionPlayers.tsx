@@ -1,18 +1,30 @@
 import "../SessionPlayers/SessionPlayers.scss";
 
 import { useUserContext } from "../../lib/context/UserContext";
-import { useEffect } from "react";
 
 export interface SessionProps {
   user: any;
 }
+
 export const SessionPlayers = () => {
-  const { user, setUser } = useUserContext();
+  const { userList } = useUserContext();
+  console.log("userList", userList);
 
-  // console.log("user", user);
-  // console.log("isWinner", isWinner);
+  if (!userList) {
+    return <>No users..</>;
+  }
 
-  return <div></div>;
+  return (
+    <div>
+      {userList && (
+        <>
+          {userList.map((user) => (
+            <p>{user.gender}</p>
+          ))}
+        </>
+      )}
+    </div>
+  );
 };
 
 export default SessionPlayers;
