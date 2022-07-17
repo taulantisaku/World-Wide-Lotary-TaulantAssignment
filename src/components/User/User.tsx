@@ -61,6 +61,7 @@ export const User = ({ user }: UserProps) => {
           <p>Country: {location.country}</p>
           <p>Postcode: {location.postcode}</p>
         </div>
+        <p>Nationality: {nationality}</p>
       </div>
     </div>
   );
