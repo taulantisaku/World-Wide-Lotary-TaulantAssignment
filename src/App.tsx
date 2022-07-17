@@ -23,6 +23,7 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <Home />
       {/* <SessionPlayers /> */}
+      <Statistics />
     </QueryClientProvider>
   );
 }

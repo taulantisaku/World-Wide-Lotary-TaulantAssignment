@@ -8,12 +8,12 @@ export interface SessionProps {
 }
 
 export const SessionPlayers = () => {
-  const {  userList } = useUserContext();
+  const { userList } = useUserContext();
 
   if (!userList) {
     return <>No users..</>;
   }
-
+  console.log("userList", userList);
   return (
     <div className="SessionPlayers">
       {userList && (
