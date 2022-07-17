@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useQuery } from "react-query";
 import axios from "axios";
 
@@ -10,6 +10,9 @@ interface UserContextProviderProps {
 
 export const UserContextProvider = (props: UserContextProviderProps) => {
   const [user, setUser] = useState<null>(null);
+  const [isWinner, setIsWinner] = useState<boolean>(false);
+  const [userList, setUserList] = useState<any>([]);
+
   const { isLoading, isError, data, refetch } = useQuery(
     ["query-users"],
     async () => {
@@ -19,30 +22,46 @@ export const UserContextProvider = (props: UserContextProviderProps) => {
       const user = await response.data.results[0];
       const userAge = response.data.results[0].dob.age;
       const ranNum = Math.floor(Math.random() * 100);
-      console.log(user);
-      // console.log("Name: ", user.name.first);
-      // console.log("userAge", userAge);
-      // console.log("ranNum", ranNum);
-      if (ranNum === userAge) {
-        alert("THE WINNER IS: " + user.name.first);
+      // console.log("user", user);
+      setUser(user);
+
+      userList.push(user);
+      setUserList(userList);
+
+      console.log("userList", userList);
+      if (userAge === ranNum) {
+        setIsWinner(true);
       }
       return user;
     },
     {
-      enabled: true,
+      enabled: false,
     }
   );
+  // console.log(data);
+  const handleRefetch = () => {
+    refetch();
+  };
+  const genButton = (
+    <>
+      {" "}
+      <button onClick={handleRefetch}>GENERATE</button>
+    </>
+  );
+
   // eslint-disable-line react-hooks/exhaustive-deps
-  setUser(data);
+
   const context: UserContextType = {
     user: user,
-    isWinner: false,
+    userList: userList,
+    isWinner: isWinner,
     setUser: () => {},
-    refetch: () => {},
+    genButton: () => {},
   };
 
   return (
     <UserContext.Provider value={context}>
+      {genButton}
       {props.children}
     </UserContext.Provider>
   );

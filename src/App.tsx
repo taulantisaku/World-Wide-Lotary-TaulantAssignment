@@ -19,13 +19,10 @@ const queryClient = new QueryClient({
 });
 
 function App() {
-  const [user, setUser] = useState<any>(null);
   return (
     <QueryClientProvider client={queryClient}>
       <Home />
       <SessionPlayers />
-      <Winners />
-      <Statistics />
     </QueryClientProvider>
   );
 }

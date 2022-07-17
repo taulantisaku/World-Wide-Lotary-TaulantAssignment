@@ -3,16 +3,19 @@ import { UseQueryResult } from "react-query";
 
 export interface UserContextType {
   user: any;
-  isWinner: boolean;
-  setUser: (value: object) => void;
-  refetch: () => void;
+  userList: Array<any>;
+  isWinner?: boolean;
+  setUser: (value: any) => void;
+  genButton?: (event: React.MouseEvent<HTMLButtonElement>) => void;
 }
 
 const UserContextValues: UserContextType = {
-  user: null,
+  user: "test",
+  userList: [],
   isWinner: false,
   setUser: () => {},
-  refetch: () => {},
+  genButton: () => {},
+
 };
 
 export const UserContext =

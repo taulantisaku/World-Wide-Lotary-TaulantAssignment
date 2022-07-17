@@ -6,43 +6,9 @@ import "../Home/Home.scss";
 import User from "../User/User";
 
 export const Home = () => {
-  const { user, setUser } = useUserContext();
-
-  const { isLoading, isError, data, refetch } = useQuery(
-    ["query-users"],
-    async () => {
-      const response = await axios.get(
-        `https://randomuser.me/api?page={pageIndex}`
-      );
-      const user = await response.data.results[0];
-      const userAge = response.data.results[0].dob.age;
-      const ranNum = Math.floor(Math.random() * 100);
-      console.log(user);
-      // console.log("Name: ", user.name.first);
-      // console.log("userAge", userAge);
-      // console.log("ranNum", ranNum);
-      if (ranNum === userAge) {
-        alert("THE WINNER IS: " + user.name.first);
-      }
-      return user;
-    },
-    {
-      enabled: true,
-    }
-  );
-
-  useEffect(() => {
-    axios
-      .get("https://randomuser.me/api?page={pageIndex}")
-      .then((response) => response.data)
-      .then((data) => console.log("DATA FROM USEEFFECT: ", data));
-  }, [data]);
+  const { user, genButton } = useUserContext();
 
   // console.log(data);
-
-  const handleClick = () => {
-    refetch();
-  };
 
   return (
     <div className="Home">
@@ -55,12 +21,12 @@ export const Home = () => {
         </ul>
       </div>
       <div className="Home__ButtonSection">
-        <button
-          onClick={handleClick}
+        {/* <button
+          onClick={genButton}
           className="Home__ButtonSection__GenerateButton"
         >
           Generate user
-        </button>
+        </button> */}
       </div>
       {user && (
         <>
