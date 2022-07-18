@@ -6,6 +6,7 @@ interface NatTypes {
 }
 export const Statistics = () => {
   const { userList } = useUserContext();
+  const [toggleSort, setToggleSort] = useState<boolean>(false);
 
   const natList = userList.map((user) => user.nat);
 
@@ -14,13 +15,41 @@ export const Statistics = () => {
   }, {});
 
   const arr = Object.entries(count);
-  console.log("Object to array => ", arr);
-  // const arr = [{ AL: 5 }, { KO: 2 }, { BE: 3 }, { GER: 14 }, { BRA: 8 }];
-  // const max = Math.max(...arr);
-  // const index = arr.indexOf(max);
-  // console.log(Object.values(arr));
+  console.log("Nationality list ", arr);
 
-  return <div>Statistics</div>;
+  //sort descending
+  const sortDesc = arr.sort(function (a: any, b: any) {
+    return b[1] - a[1];
+  });
+
+  const handleToggle = () => {
+    setToggleSort(!toggleSort);
+  };
+  const sortedlist = (
+    <>
+      {toggleSort ? (
+        <ul>
+          <button onClick={handleToggle}>ASCENDING :</button>
+
+          {sortDesc.map((nat: any) => (
+            <li>{nat.join(" : ")}</li>
+          ))}
+        </ul>
+      ) : (
+        <ul>
+          <button onClick={handleToggle}>DESCENDING :</button>
+          {sortDesc.map((nat: any) => <li>{nat.join(" : ")}</li>).reverse()}
+        </ul>
+      )}
+    </>
+  );
+
+  return (
+    <div>
+      <h1>List of nationality that played the most:</h1>
+      {userList && <>{sortedlist}</>}
+    </div>
+  );
 };
 
 export default Statistics;
