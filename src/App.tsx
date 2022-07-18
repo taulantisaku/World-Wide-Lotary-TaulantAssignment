@@ -6,6 +6,7 @@ import Statistics from "./components/Statistics/Statistics";
 import Winners from "./components/Winners/Winners";
 
 import { UserContext } from "./lib/context/UserContext";
+import { Routess } from "./routes/Routes";
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -22,9 +23,7 @@ function App() {
   return (
     <QueryClientProvider client={queryClient}>
       <Home />
-      {/* <SessionPlayers /> */}
-      {/* <Statistics /> */}
-      <Winners />
+      <Routess />
     </QueryClientProvider>
   );
 }

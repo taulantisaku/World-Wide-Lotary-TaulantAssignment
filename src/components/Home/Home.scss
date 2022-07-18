@@ -6,14 +6,15 @@
     &__navlist {
       display: flex;
       background-color: #000080;
-      color: white;
       justify-content: space-evenly;
       list-style-type: none;
 
-      li {
+      a {
+        color: white;
         padding: 15px;
+        text-decoration: none;
       }
-      li:hover {
+      a:hover {
         background-color: #00005a;
         cursor: pointer;
       }

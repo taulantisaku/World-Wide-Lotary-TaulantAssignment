@@ -28,7 +28,9 @@ export const SessionPlayers = () => {
     <>
       {toggleSort ? (
         <>
-          <button onClick={handleToggle}>ASCENDING :</button>
+          <button className="SessionPlayers__SortButton" onClick={handleToggle}>
+            ASCENDING :
+          </button>
           <div className="SessionPlayers">
             {sortedDsc.map((user: any) => (
               <User user={user} key={user.id.value} />
@@ -37,7 +39,9 @@ export const SessionPlayers = () => {
         </>
       ) : (
         <>
-          <button onClick={handleToggle}>ASCENDING :</button>
+          <button className="SessionPlayers__SortButton" onClick={handleToggle}>
+            DESCENDING :
+          </button>
           <div className="SessionPlayers">
             {sortedDsc
               .map((user: any) => <User user={user} key={user.id.value} />)
@@ -49,7 +53,12 @@ export const SessionPlayers = () => {
   );
 
   console.log("sortedAsc", sortedDsc);
-  return <div>{userList && <>{sortedlist}</>}</div>;
+  return (
+    <div>
+      <h1>List of all players:</h1>
+      {userList && <>{sortedlist}</>}
+    </div>
+  );
 };
 
 export default SessionPlayers;

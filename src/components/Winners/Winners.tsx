@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useUserContext } from "../../lib/context/UserContext";
 import User from "../User/User";
+import "../Winners/Winners.scss";
 
 export const Winners = () => {
   const { userList } = useUserContext();
@@ -18,7 +19,9 @@ export const Winners = () => {
     <>
       {toggleSort ? (
         <>
-          <button onClick={handleToggle}>ASCENDING :</button>
+          <button className="Winners__SortButton" onClick={handleToggle}>
+            ASCENDING :
+          </button>
           <div className="Winners">
             {sortedDsc.map((user: any) => (
               <User user={user} key={user.id.value} />
@@ -27,7 +30,9 @@ export const Winners = () => {
         </>
       ) : (
         <>
-          <button onClick={handleToggle}>ASCENDING :</button>
+          <button className="Winners__SortButton" onClick={handleToggle}>
+            ASCENDING :
+          </button>
           <div className="Winners">
             {sortedDsc
               .map((user: any) => <User user={user} key={user.id.value} />)

@@ -1,3 +1,17 @@
 .SessionPlayers {
   display: flex;
+  &__SortButton {
+    font-family: Poppins;
+    letter-spacing: 2px;
+    padding: 10px;
+    background-color: #22a7f0;
+    border: none;
+    border-radius: 5px;
+    color: white;
+
+    &:hover {
+      background-color: #19b5fe;
+      cursor: pointer;
+    }
+  }
 }

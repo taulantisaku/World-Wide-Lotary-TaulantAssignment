@@ -1,33 +1,22 @@
-import axios from "axios";
-import { useEffect } from "react";
-import { useQuery } from "react-query";
-import { useUserContext } from "../../lib/context/UserContext";
 import "../Home/Home.scss";
 import User from "../User/User";
+import { NavLink } from "react-router-dom";
+import { useUserContext } from "../../lib/context/UserContext";
 
 export const Home = () => {
-  const { user, genButton } = useUserContext();
-
-  // console.log(data);
+  const { user } = useUserContext();
 
   return (
     <div className="Home">
       <div className="Home__header">
         <ul className="Home__header__navlist">
-          <li>Home</li>
-          <li>Winners</li>
-          <li>Session Players</li>
-          <li>Statistics</li>
+          <NavLink to="/">Home</NavLink>
+          <NavLink to="/winners">Winners</NavLink>
+          <NavLink to="/players">Session Players</NavLink>
+          <NavLink to="/stats">Statistics</NavLink>
         </ul>
       </div>
-      <div className="Home__ButtonSection">
-        {/* <button
-          onClick={genButton}
-          className="Home__ButtonSection__GenerateButton"
-        >
-          Generate user
-        </button> */}
-      </div>
+      <div className="Home__ButtonSection"></div>
       {user && (
         <>
           <div className="Home__User">
