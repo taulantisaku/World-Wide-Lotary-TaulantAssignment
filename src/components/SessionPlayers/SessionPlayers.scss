@@ -14,4 +14,33 @@
       cursor: pointer;
     }
   }
+
+  &__SaveButton {
+    font-family: Poppins;
+    letter-spacing: 2px;
+    padding: 10px;
+    background-color: #ff8c00;
+    border: none;
+    border-radius: 5px;
+    color: white;
+
+    &:hover {
+      background-color: #ffa500;
+      cursor: pointer;
+    }
+  }
+  &__ClearButton {
+    font-family: Poppins;
+    letter-spacing: 2px;
+    padding: 10px;
+    background-color: #ff0000;
+    border: none;
+    border-radius: 5px;
+    color: white;
+
+    &:hover {
+      background-color: #ff6666;
+      cursor: pointer;
+    }
+  }
 }

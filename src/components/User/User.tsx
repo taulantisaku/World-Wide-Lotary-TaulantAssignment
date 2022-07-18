@@ -4,29 +4,34 @@ export interface UserProps {
   user: any;
   isWinner?: boolean;
 }
-
 export interface UserType {
-  picture: {
-    large: string;
-    medium: string;
-    thumbnail: string;
+  user: {
+    picture: {
+      large: string;
+      medium: string;
+      thumbnail: string;
+    };
+    fullName: {
+      title: string;
+      first: string;
+      last: string;
+    };
+    email: string;
+    gender: string;
+    cell: string;
+    phone: string;
+    location: {
+      country: string;
+      city: string;
+      postcode: number;
+    };
+    nat: string;
+    isWinner: boolean;
+    age: number;
+    timesPlayed: number;
+    time: string;
+    id: number;
   };
-  fullName: {
-    title: string;
-    first: string;
-    last: string;
-  };
-  email: string;
-  gender: string;
-  cell: string;
-  phone: string;
-  location: string;
-  nat: string;
-  isWinner: boolean;
-  age: number;
-  timesPlayed: number;
-  time: string;
-  id: number;
 }
 
 export const User = ({ user }: UserProps) => {

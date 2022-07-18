@@ -15,7 +15,6 @@ export const Statistics = () => {
   }, {});
 
   const arr = Object.entries(count);
-  console.log("Nationality list ", arr);
 
   //sort descending
   const sortDesc = arr.sort(function (a: any, b: any) {

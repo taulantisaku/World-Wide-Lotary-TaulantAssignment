@@ -1,12 +1,8 @@
-import "../SessionPlayers/SessionPlayers.scss";
-
-import User from "../User/User";
-import { useUserContext } from "../../lib/context/UserContext";
 import { useState } from "react";
-
-export interface SessionProps {
-  user: any;
-}
+import User from "../User/User";
+import { ExportToCsv } from "export-to-csv";
+import "../SessionPlayers/SessionPlayers.scss";
+import { useUserContext } from "../../lib/context/UserContext";
 
 export const SessionPlayers = () => {
   const { userList } = useUserContext();
@@ -52,11 +48,39 @@ export const SessionPlayers = () => {
     </>
   );
 
-  console.log("sortedAsc", sortedDsc);
+  const options = {
+    fieldSeparator: ",",
+    quoteStrings: '"',
+    decimalSeparator: ".",
+    showLabels: true,
+    showTitle: true,
+    title: "All lotary players",
+    useTextFile: false,
+    useBom: true,
+    useKeysAsHeaders: true,
+  };
+
+  const csvExporter = new ExportToCsv(options);
+  const handleDownload = () => {
+    csvExporter.generateCsv(sortedDsc);
+  };
+  // clears array from memory, but the UI should re-render to view changes
+  const handleClear = () => {
+    while (sortedDsc.length > 0) {
+      sortedDsc.pop();
+    }
+  };
+
   return (
     <div>
       <h1>List of all players:</h1>
       {userList && <>{sortedlist}</>}
+      <button className="SessionPlayers__ClearButton" onClick={handleClear}>
+        Clear list
+      </button>
+      <button className="SessionPlayers__SaveButton" onClick={handleDownload}>
+        Save players...
+      </button>
     </div>
   );
 };

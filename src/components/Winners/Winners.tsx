@@ -1,7 +1,7 @@
-import { useState } from "react";
-import { useUserContext } from "../../lib/context/UserContext";
-import User from "../User/User";
 import "../Winners/Winners.scss";
+import { useState } from "react";
+import User from "../User/User";
+import { useUserContext } from "../../lib/context/UserContext";
 
 export const Winners = () => {
   const { userList } = useUserContext();
