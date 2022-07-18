@@ -7,7 +7,7 @@ import { useState } from "react";
 export interface SessionProps {
   user: any;
 }
-
+ 
 export const SessionPlayers = () => {
   const { userList } = useUserContext();
   const [toggleSort, setToggleSort] = useState<boolean>(false);
