@@ -2,6 +2,7 @@ import "../SessionPlayers/SessionPlayers.scss";
 
 import User from "../User/User";
 import { useUserContext } from "../../lib/context/UserContext";
+import { useState } from "react";
 
 export interface SessionProps {
   user: any;
@@ -9,22 +10,46 @@ export interface SessionProps {
 
 export const SessionPlayers = () => {
   const { userList } = useUserContext();
+  const [toggleSort, setToggleSort] = useState<boolean>(false);
 
   if (!userList) {
     return <>No users..</>;
   }
-  console.log("userList", userList);
-  return (
-    <div className="SessionPlayers">
-      {userList && (
+
+  const sortedDsc = userList.sort(
+    (objA, objB) => Number(objB.date) - Number(objA.date)
+  );
+
+  const handleToggle = () => {
+    setToggleSort(!toggleSort);
+  };
+
+  const sortedlist = (
+    <>
+      {toggleSort ? (
         <>
-          {userList.map((user) => (
-            <User user={user} key={user.id.value} />
-          ))}
+          <button onClick={handleToggle}>ASCENDING :</button>
+          <div className="SessionPlayers">
+            {sortedDsc.map((user: any) => (
+              <User user={user} key={user.id.value} />
+            ))}
+          </div>
+        </>
+      ) : (
+        <>
+          <button onClick={handleToggle}>ASCENDING :</button>
+          <div className="SessionPlayers">
+            {sortedDsc
+              .map((user: any) => <User user={user} key={user.id.value} />)
+              .reverse()}
+          </div>
         </>
       )}
-    </div>
+    </>
   );
+
+  console.log("sortedAsc", sortedDsc);
+  return <div>{userList && <>{sortedlist}</>}</div>;
 };
 
 export default SessionPlayers;
